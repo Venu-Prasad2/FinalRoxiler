@@ -1,4 +1,4 @@
-/* General container styling */
+
 .transactions-container {
     width: 90%;
     max-width: 1200px;
@@ -10,7 +10,7 @@
     font-family: Arial, sans-serif;
 }
 
-/* Header */
+
 .transactions-header {
     text-align: center;
     font-size: 24px;
@@ -19,14 +19,14 @@
     margin-bottom: 20px;
 }
 
-/* Controls */
+
 .transactions-controls {
     display: flex;
     justify-content: center;
     margin-bottom: 15px;
 }
 
-/* Dropdown */
+
 .month-select {
     padding: 8px 12px;
     font-size: 16px;
@@ -58,7 +58,7 @@
     outline: none;
 }
 
-/* Table styling */
+
 .transactions-table {
     width: 100%;
     border-collapse: collapse;
@@ -85,7 +85,7 @@
     background-color: #f1f1f1;
 }
 
-/* Image inside table */
+
 .transaction-image {
     display: block;
     width: 50px;
@@ -113,6 +113,12 @@
     font-size: 16px;
     
 }
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+  }
 
 .pagination button:hover {
     background-color: #0056b3;
