@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ThreeDots } from "react-loader-spinner"; 
 import "./index.css";
 
 const monthNames = {
@@ -19,7 +20,7 @@ const Statistics = ({ selectedMonth }) => {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch(`http://localhost:3000/api/statistics?month=${selectedMonth}`);
+        const response = await fetch(`https://finalroxiler-backend.onrender.com/api/statistics?month=${selectedMonth}`);
         if (!response.ok) throw new Error("Failed to fetch statistics");
         const data = await response.json();
         setStats(data);
@@ -35,10 +36,13 @@ const Statistics = ({ selectedMonth }) => {
 
   return (
     <div className="statistics-container">
-      <h2>Statistics for {monthNames[selectedMonth] || "Unknown"}</h2>
+      <h2 className="chart-title">Statistics for {monthNames[selectedMonth] || "Unknown"}</h2>
       
       {loading ? (
-        <div>Loading statistics...</div>
+        <div className="loader-container">
+          <ThreeDots color="#007bff" height={50} width={50} />
+          <p>Loading statistics...</p>
+        </div>
       ) : error ? (
         <div className="error-text">{error}</div>
       ) : stats ? (
