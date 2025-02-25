@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ThreeDots } from "react-loader-spinner"; 
 import "./index.css";
 
 const monthMap = {
@@ -19,16 +20,16 @@ const AllTransactions = ({ selectedMonth, onMonthChange }) => {
       try {
         setLoading(true);
         setError(null);
-        
+
         const response = await fetch(
-          `http://localhost:3000/api/products?month=${selectedMonth}&page=${currentPage}&search=${searchQuery}`
+          `https://finalroxiler-backend.onrender.com/api/products?month=${selectedMonth}&page=${currentPage}&search=${searchQuery}`
         );
-        
+
         if (!response.ok) throw new Error("Failed to fetch transactions");
-        
+
         const data = await response.json();
-        console.log("Fetched Transactions:", data); // ✅ Debugging API response
-        
+        console.log("Fetched Transactions:", data); 
+
         setTransactions(data.products || []);
         setTotalPages(data.pagination?.totalPages || 1);
       } catch (err) {
@@ -45,7 +46,7 @@ const AllTransactions = ({ selectedMonth, onMonthChange }) => {
     <div className="transactions-container">
       <h2 className="transactions-header">All Transactions</h2>
 
-      {/* Month Selector */}
+    
       <div className="transactions-controls">
         <select
           value={selectedMonth}
@@ -60,7 +61,7 @@ const AllTransactions = ({ selectedMonth, onMonthChange }) => {
         </select>
       </div>
 
-      {/* Search Input */}
+     
       <input
         type="text"
         placeholder="Search by title or category..."
@@ -69,9 +70,11 @@ const AllTransactions = ({ selectedMonth, onMonthChange }) => {
         className="search-input"
       />
 
-      {/* Transactions Table */}
+     
       {loading ? (
-        <div>Loading...</div>
+        <div className="loader-container">
+          <ThreeDots color="#007bff" height={60} width={60} />
+        </div>
       ) : error ? (
         <div className="error-text">{error}</div>
       ) : transactions.length > 0 ? (
@@ -89,8 +92,8 @@ const AllTransactions = ({ selectedMonth, onMonthChange }) => {
           </thead>
           <tbody>
             {transactions.map((item) => {
-              console.log("Image URL:", item.image); // ✅ Debugging image URL
-              
+              console.log("Image URL:", item.image); 
+
               return (
                 <tr key={item.id}>
                   <td>{item.id}</td>
@@ -117,7 +120,7 @@ const AllTransactions = ({ selectedMonth, onMonthChange }) => {
           </tbody>
         </table>
       ) : (
-        <div>No transactions found</div>
+        <div className="no-data">No transactions found</div>
       )}
 
       
