@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ThreeDots } from "react-loader-spinner"; // ✅ Import ThreeDots loader
+import { ThreeDots } from "react-loader-spinner"; 
 import "./index.css";
 
 const monthNames = {
