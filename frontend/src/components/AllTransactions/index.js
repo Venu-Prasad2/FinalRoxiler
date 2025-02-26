@@ -92,7 +92,7 @@ const AllTransactions = ({ selectedMonth, onMonthChange }) => {
           </thead>
           <tbody>
             {transactions.map((item) => {
-              console.log("Image URL:", item.image); // ✅ Debugging image URL
+              console.log("Image URL:", item.image); 
 
               return (
                 <tr key={item.id}>
