@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
-import { ThreeDots } from "react-loader-spinner"; 
+import { ThreeDots } from "react-loader-spinner"; // ✅ Import ThreeDots loader
 import "./index.css";
 
 const monthNames = {
@@ -21,20 +21,20 @@ const BarchartDisplay = ({ selectedMonth }) => {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch(`https://finalroxiler-backend.onrender.com/api/price-range-statistics?month=${selectedMonth}`);
+        const response = await fetch(`https://finalroxiler-backend-1.onrender.com/api/price-range-statistics?month=${selectedMonth}`);
         if (!response.ok) throw new Error("Failed to fetch price range statistics");
         const result = await response.json();
 
-       
+        // Define expected ranges up to "901 and above"
         const expectedRanges = [
           "0-100", "101-200", "201-300", "301-400", "401-500",
           "501-600", "601-700", "701-800", "801-900", "901 and above"
         ];
 
-        
+        // Convert API response into chart-friendly format while ensuring all ranges exist
         const formattedData = expectedRanges.map(range => ({
           range,
-          count: result[range] || 0 
+          count: result[range] || 0 // Default to 0 if range is missing from API response
         }));
 
         setData(formattedData);
