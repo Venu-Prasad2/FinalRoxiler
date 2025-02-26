@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
-import { ThreeDots } from "react-loader-spinner"; // ✅ Import ThreeDots loader
+import { ThreeDots } from "react-loader-spinner"; 
 import "./index.css";
 
 const monthNames = {
