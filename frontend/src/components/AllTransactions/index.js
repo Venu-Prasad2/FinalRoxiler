@@ -22,7 +22,7 @@ const AllTransactions = ({ selectedMonth, onMonthChange }) => {
         setError(null);
 
         const response = await fetch(
-          `https://finalroxiler-backend.onrender.com/api/products?month=${selectedMonth}&page=${currentPage}&search=${searchQuery}`
+          `https://finalroxiler-backend-1.onrender.com/api/products?month=${selectedMonth}&page=${currentPage}&search=${searchQuery}`
         );
 
         if (!response.ok) throw new Error("Failed to fetch transactions");
@@ -92,7 +92,7 @@ const AllTransactions = ({ selectedMonth, onMonthChange }) => {
           </thead>
           <tbody>
             {transactions.map((item) => {
-              console.log("Image URL:", item.image); 
+              console.log("Image URL:", item.image); // ✅ Debugging image URL
 
               return (
                 <tr key={item.id}>
@@ -123,7 +123,7 @@ const AllTransactions = ({ selectedMonth, onMonthChange }) => {
         <div className="no-data">No transactions found</div>
       )}
 
-      
+      {/* Pagination */}
       <div className="pagination">
         <button
           disabled={currentPage === 1}
