@@ -4,7 +4,7 @@ import Statistics from "./components/Statistics";
 import BarchartDisplay from "./components/BarchartDisplay";
 
 function App() {
-  const [selectedMonth, setSelectedMonth] = useState("03"); // Ensure "MM" format
+  const [selectedMonth, setSelectedMonth] = useState("03"); 
 
   return (
     <div className="container mx-auto p-6">
